@@ -9,6 +9,7 @@ class BairroController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * teste git
      */
     public function index()
     {
