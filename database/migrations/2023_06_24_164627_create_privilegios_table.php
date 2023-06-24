@@ -17,6 +17,17 @@ return new class extends Migration
             $table->string('nome_privigelio');
             $table->boolean('eh_ativo_privilegio');
         });
+
+        Schema::create('usuario_privilegios', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
+
+            $table->unsignedBigInteger('id_privilegio');
+            $table->foreign('id_privilegio')->references('id')->on('privilegios');
+        });
     }
 
     /**
@@ -25,5 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('privilegios');
+        Schema::dropIfExists('usuario_privilegios');
     }
 };

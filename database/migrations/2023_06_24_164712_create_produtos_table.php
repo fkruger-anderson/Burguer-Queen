@@ -20,6 +20,14 @@ return new class extends Migration
             $table->text('descricao_produto');
             $table->string('imagem')->nullable;
         });
+
+        Schema::create('ingredientes_produtos', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_ingrediente');
+            $table->foreign('id_ingrediente')->references('id')->on('ingredientes');
+
+            $table->unsignedBigInteger('id_produto');
+            $table->foreign('id_produto')->references('id')->on('produtos');
+        });
     }
 
     /**
@@ -28,5 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('produtos');
+        Schema::dropIfExists('ingredientes_produtos');
     }
 };

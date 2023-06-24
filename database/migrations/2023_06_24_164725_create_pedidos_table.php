@@ -19,6 +19,17 @@ return new class extends Migration
             $table->unsignedBigInteger('id_frete_detalhado');
             $table->foreign('id_frete_detalhado')->references('id')->on('frete_detalhados');
         });
+
+        Schema::create('usuario_pedido_situacao', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
+
+            $table->unsignedBigInteger('id_pedido');
+            $table->foreign('id_pedido')->references('id')->on('pedidos');
+            
+            $table->unsignedBigInteger('id_situacao');
+            $table->foreign('id_situacao')->references('id')->on('situacaos');
+        });
     }
 
     /**
@@ -27,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('usuario_pedido_situacao');
     }
 };

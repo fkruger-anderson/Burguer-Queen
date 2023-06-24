@@ -20,6 +20,17 @@ return new class extends Migration
             $table->unsignedBigInteger('id_frete');
             $table->foreign('id_frete')->references('id')->on('fretes');
         });
+
+        Schema::create('bairro_frete_detalhado', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+
+            $table->unsignedBigInteger('id_bairro');
+            $table->foreign('id_bairro')->references('id')->on('bairros');
+
+            $table->unsignedBigInteger('id_frete_detalhado');
+            $table->foreign('id_frete_detalhado')->references('id')->on('frete_detalhados');
+        });
     }
 
     /**
@@ -28,5 +39,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('frete_detalhados');
+        Schema::dropIfExists('bairro_frete_detalhado');
     }
 };
