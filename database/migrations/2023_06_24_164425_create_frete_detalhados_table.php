@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('frete_detalhados', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nome_frete_detalhado');
+            $table->boolean('eh_ativo_fretedetalhado');
+            $table->double('preco', 10, 2);
+            $table->unsignedBigInteger('id_frete');
+            $table->foreign('id_frete')->references('id')->on('fretes');
         });
     }
 
