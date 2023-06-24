@@ -19,7 +19,6 @@ return new class extends Migration
         });
 
         Schema::create('usuario_privilegios', function (Blueprint $table) {
-            $table->id();
             $table->timestamps();
 
             $table->unsignedBigInteger('id_user');
