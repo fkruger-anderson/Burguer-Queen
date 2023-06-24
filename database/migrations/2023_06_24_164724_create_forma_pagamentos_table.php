@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('forma_pagamentos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nome_forma_pgto');
+            $table->boolean('eh_ativo_forma_pgto');
+            $table->boolean('eh_prazo');
+            $table->integer('parcela');
         });
     }
 

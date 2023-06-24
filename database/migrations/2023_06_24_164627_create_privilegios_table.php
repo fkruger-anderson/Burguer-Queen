@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('privilegios', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nome_privigelio');
+            $table->boolean('eh_ativo_privilegio');
         });
     }
 

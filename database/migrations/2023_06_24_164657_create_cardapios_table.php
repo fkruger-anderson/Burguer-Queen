@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('cardapios', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nome_cardapio');
+            $table->boolean('eh_ativo_cardapio');
+            $table->boolean('tem_ingrediente');
         });
     }
 
