@@ -19,6 +19,8 @@ return new class extends Migration
             $table->double('preco_produto',10,2);
             $table->text('descricao_produto');
             $table->string('imagem')->nullable;
+            $table->unsignedBigInteger('id_cardapio');
+            $table->foreign('id_cardapio')->references('id')->on('cardapios');
         });
 
         Schema::create('ingredientes_produtos', function (Blueprint $table) {
