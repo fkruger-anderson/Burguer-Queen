@@ -12,7 +12,8 @@ class IngredienteController extends Controller
      */
     public function index()
     {
-        //
+        $ingredientes = Ingrediente::all();
+        return view('TelaEmpresarialIngrediente', compact('ingredientes'));
     }
 
     /**

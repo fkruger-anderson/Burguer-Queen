@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class TelaHomeClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::all();
-        return view('TelaEmpresarialProduto', compact('produtos'));
+        return view('TelaHomeCliente', compact('produtos'));
     }
 
     /**

@@ -12,7 +12,8 @@ class FormaPagamentoController extends Controller
      */
     public function index()
     {
-        //
+        $forma_pagamentos = FormaPagamento::all();
+        return view('TelaEmpresarialFormaPagamento', compact('forma_pagamentos'));
     }
 
     /**
