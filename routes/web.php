@@ -12,7 +12,7 @@ use App\Http\Controllers\UserController;
 
 //Route::resource('/', ProdutoController::class);
 Route::resource('/', TelaHomeClienteController::class);
-Route::get('/produto/{slug}',  [TelaHomeClienteController::class, 'detalhes'])->name('TelaHomeClienteController.Detalhes');
+Route::get('/produto/{slug}',  [TelaHomeClienteController::class, 'detalhes'])->name('TelaHomeClienteDetalhes');
 
 //Route::resource('/', IngredienteController::class);
 //Route::resource('privilegios', PrivilegioController::class);

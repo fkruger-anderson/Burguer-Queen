@@ -17,10 +17,10 @@ class TelaHomeClienteController extends Controller
     }
 
     // Detalhas
-    public function detalhes()
+    public function detalhes($slug)
     {
         $produto = Produto::where('slug', $slug)->first();
-        return view('TelaHomeClienteController.Detalhes', compact('produto'));
+        return view('TelaHomeClienteDetalhes', compact('produto'));
     }
 
     /**

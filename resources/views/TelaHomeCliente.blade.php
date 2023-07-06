@@ -11,7 +11,7 @@
           <div class="card-image">
             <img src="{{$produto->imagem}}" style="width: 213px; height: 150px;">
             
-            <a href="{{ route('TelaHomeClienteController.Detalhes', $produto->slug)}}"class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <a href="{{route('TelaHomeClienteDetalhes', ['slug' => $produto->slug])}}"class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
           </div>
           <div class="card-content">
             <span class="card-title" style="font-size: 14px;">{{ $produto->nome_produto }}</span>
