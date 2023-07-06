@@ -1,9 +1,11 @@
 @extends('TelaLayoutEmpresarial')
 @section('title', 'Produtos')
 @section('lista')
-    <h2>Produtos</h2>
+    <h2>Promoções</h2>
 @endsection
-
+@section('adicionar')
+                <button class="btn">Adicionar</button>
+@endsection
 @section('conteudo')
 
 <div class="row container">
@@ -11,23 +13,21 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Data Início</th>
+                <th>Data Fim</th>
                 <th>Nome</th>
-                <th>Cardápio</th>
-                <th>Preço</th>
-                <th>Data</th>
                 <th>Ativo</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($produtos as $produto)
+            @foreach ($promocoes as $promocao)
             <tr>
-                <td>{{ $produto->id }}</td>
-                <td>{{ $produto->nome_produto }}</td>
-                <td>{{ $produto->id_cardapio }}</td>
-                <td>{{ $produto->preco_produto }}</td>
-                <td>{{ $produto->created_at }}</td>
-                <td><input type="checkbox" {{ $produto->eh_ativo_produto ? 1 : 0 }}></td>
+                <td>{{ $promocao->id }}</td>
+                <td>{{ $promocao->data_inicial_promocao }}</td>
+                <td>{{ $promocao->data_final_promocao }}</td>
+                <td>{{ $promocao->nome_promocao }}</td>
+                <td><input type="checkbox" {{ $promocao->eh_ativo_promocao ? 'checked' : '' }}></td>
                 <td>
                     <button class="btn-edit">Alterar</button>
                     <button class="btn-delete">Excluir</button>
@@ -39,3 +39,4 @@
 </div>
 
 @endsection
+

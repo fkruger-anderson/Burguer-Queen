@@ -12,7 +12,8 @@ class PrivilegioController extends Controller
      */
     public function index()
     {
-        //
+        $privilegios = Privilegio::all();
+        return view('TelaEmpresarialPrivilegio', compact('privilegios'));
     }
 
     /**

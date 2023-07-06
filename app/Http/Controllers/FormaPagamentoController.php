@@ -29,7 +29,25 @@ class FormaPagamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validação dos campos do formulário
+        $request->validate([
+            'nome' => 'required',
+            'ativo' => 'boolean',
+            'prazo' => 'required|boolean',
+            'parcela' => 'integer',
+        ]);
+
+        // Criação da nova forma de pagamento
+        $formaPagamento = new FormaPagamento();
+        $formaPagamento->nome_forma_pgto = $request->input('nome');
+        $formaPagamento->eh_ativo_forma_pgto = $request->input('ativo') ?? false;
+        $formaPagamento->eh_prazo = $request->input('prazo');
+        $formaPagamento->parcela = $request->input('parcela');
+        $formaPagamento->save();
+
+        // Redirecionamento para a página de sucesso ou exibição de mensagem
+        return redirect()->route('formas-pagamento.index')->with('success', 'Forma de pagamento cadastrada com sucesso!');
+
     }
 
     /**

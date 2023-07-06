@@ -18,6 +18,8 @@
             font-family: Arial, sans-serif;
             display: grid;
             grid-template-columns: 15%, 85%;
+            min-height: 100%;
+            background-color: rgb(238, 238, 238);
         }
 
     
@@ -60,16 +62,16 @@
     	
         <div id="sidebar" "center">
             <ul>
-                <li><span id="btUsuario">Usuários</span></li>
-                <li><span id="btCliente">Clientes</span></li>
-                <li><span id="btProduto">Produtos</span></li>
-                <li><span id="btPedido">Pedidos</span></li>
-                <li><span id="btCategoria">Categorias</span></li>
-                <li><span id="btFormaPagamento">Formas de Pagamento</span></li>
-                <li><span id="btFreteEntregadores">Frete/Entregadores</span></li>
-                <li><span id="btIngrediente">Ingredientes</span></li>
-                <li><span id="btPromocao">Promoções</span></li>
-                <li><span id="btPrivilegio">Privilégios</span></li>
+                <li><span id="btUsuario" onclick="abrirView('usuarios')">Usuários</span></li>
+                <li><span id="btCliente" onclick="abrirView('Produto')">Clientes</span></li>
+                <li><span id="btProduto" onclick="abrirView('Produto')">Produtos</span></li>
+                <li><span id="btPedido" onclick="abrirView('usuarios')">Pedidos</span></li>
+                <li><span id="btCategoria" onclick="abrirView('usuarios')">Categorias</span></li>
+                <li><span id="btFormaPagamento" onclick="abrirView('usuarios')">Formas de Pagamento</span></li>
+                <li><span id="btFreteEntregadores" onclick="abrirView('usuarios')">Frete/Entregadores</span></li>
+                <li><span id="btIngrediente" onclick="abrirView('usuarios')">Ingredientes</span></li>
+                <li><span id="btPromocao" onclick="abrirView('usuarios')">Promoções</span></li>
+                <li><span id="btPrivilegio" onclick="abrirViewPrivilegio()">Privilégios</span></li>
             </ul>
         </div>
     
@@ -150,7 +152,8 @@
               <form class="search-form">
                 <input type="text" class="search-input" placeholder="Pesquisar...">
                 <button class="btn" type="submit">Buscar</button>
-                <button class="btn">Adicionar</button>
+                @yield('adicionar')
+                <!-- <button class="btn">Adicionar</button> -->
               </form>
           
               @yield('conteudo')
@@ -164,7 +167,7 @@
 
         <script>
             // Função para carregar o conteúdo da nova view
-            function carregarView(view) {
+            /*function carregarView(view) {
                 $("#content").load(view + ".php");
             }
     
@@ -219,11 +222,17 @@
             $("#btPrivilegio").click(function() {
                 carregarView("privilegios");
             });
+            }*/
+
+            
+            function abrirView(route) {
+                window.location.href = "/" + route; // Substitua "/" pelo caminho base da sua aplicação, se necessário
+            }
+            function  abrirViewPrivilegio() {
+                window.location.href = "{{route('privilegio')}}"; // Substitua "/" pelo caminho base da sua aplicação, se necessário
             }
 
-            $(document).ready(function() {
-                habilitaBotoes();
-            });
+            
         </script>  
 </body>
 </html>

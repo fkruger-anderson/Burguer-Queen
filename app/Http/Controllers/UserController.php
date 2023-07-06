@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Promocao;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class PromocaoController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $promocoes = Promocao::all();
-        return view('TelaEmpresarialPromocao', compact('promocoes'));
+        $users = User::all();
+        return view('TelaEmpresarialUsuario', compact('users'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PromocaoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Promocao $promocao)
+    public function show(TipoPromocao $tipoPromocao)
     {
         //
     }
@@ -43,7 +43,7 @@ class PromocaoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Promocao $promocao)
+    public function edit(TipoPromocao $tipoPromocao)
     {
         //
     }
@@ -51,7 +51,7 @@ class PromocaoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Promocao $promocao)
+    public function update(Request $request, TipoPromocao $tipoPromocao)
     {
         //
     }
@@ -59,7 +59,7 @@ class PromocaoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Promocao $promocao)
+    public function destroy(TipoPromocao $tipoPromocao)
     {
         //
     }

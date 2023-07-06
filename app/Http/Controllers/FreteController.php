@@ -12,7 +12,8 @@ class FreteController extends Controller
      */
     public function index()
     {
-        //
+        $fretes = Frete::all();
+        return view('TelaEmpresarialFrete', compact('fretes'));
     }
 
     /**
@@ -20,7 +21,7 @@ class FreteController extends Controller
      */
     public function create()
     {
-        //
+        return view('TelaEmpresarialFreteCadastro');
     }
 
     /**
@@ -28,7 +29,7 @@ class FreteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('TelaEmpresarialFreteCadastro');
     }
 
     /**

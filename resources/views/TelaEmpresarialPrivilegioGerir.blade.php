@@ -1,7 +1,12 @@
 @extends('TelaLayoutEmpresarial')
-@section('title', 'Produtos')
+@section('title', 'Privilégios')
+
 @section('lista')
-    <h2>Produtos</h2>
+    <h2>Privilégios</h2>
+@endsection
+
+@section('adicionar')
+    <button class="btn">Gerir</button>
 @endsection
 
 @section('conteudo')
@@ -11,23 +16,19 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Cardápio</th>
-                <th>Preço</th>
                 <th>Data</th>
+                <th>Usuario</th>
+                <th>Privilegio</th>
                 <th>Ativo</th>
-                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($produtos as $produto)
+            @foreach ($privilegios as $privilegio)
             <tr>
-                <td>{{ $produto->id }}</td>
-                <td>{{ $produto->nome_produto }}</td>
-                <td>{{ $produto->id_cardapio }}</td>
-                <td>{{ $produto->preco_produto }}</td>
-                <td>{{ $produto->created_at }}</td>
-                <td><input type="checkbox" {{ $produto->eh_ativo_produto ? 1 : 0 }}></td>
+                <td>{{ $privilegio->id }}</td>
+                <td>{{ $privilegio->created_at}}</td>
+                <td>{{ $privilegio->nome_privigelio}}</td>
+                <td><input type="checkbox" {{ $privilegio->eh_ativo_privilegio ? 'checked' : '' }}></td>
                 <td>
                     <button class="btn-edit">Alterar</button>
                     <button class="btn-delete">Excluir</button>

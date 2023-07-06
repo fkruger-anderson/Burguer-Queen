@@ -62,4 +62,14 @@ class FreteDetalhadoController extends Controller
     {
         //
     }
+
+    public function pesquisarDetalhamentoPorFrete(Request $request)
+{
+    $nomeFrete = $request->input('nome_frete');
+
+    $frete = Frete::where('nome_frete', $nome_frete)->get();
+
+    return view('nome-da-view', compact('frte'));
+}
+
 }

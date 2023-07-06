@@ -16,6 +16,13 @@ class TelaHomeClienteController extends Controller
         return view('TelaHomeCliente', compact('produtos'));
     }
 
+    // Detalhas
+    public function detalhes()
+    {
+        $produto = Produto::where('slug', $slug)->first();
+        return view('TelaHomeClienteController.Detalhes', compact('produto'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -19,6 +19,13 @@ class IngredienteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function cadastro()
+    {
+       return view('TelaEmpresarialIngredienteCadastro');
+    }
+
+
     public function create()
     {
         //
@@ -29,7 +36,23 @@ class IngredienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validação dos dados
+        $request->validate([
+            'nome' => 'required',
+            'ativo' => 'required|boolean',
+        ]);
+
+
+        // Criação do novo ingrediente
+        Ingrediente::create([
+            'nome_ingrediente' => $request->input('nome'),
+            'eh_ativo_ingrediente' => $request->input('ativo'),
+        ]);
+
+
+        // Redirecionamento de volta à página de consulta
+        return redirect()->route('TelaEmpresarialIngrediente');
+
     }
 
     /**

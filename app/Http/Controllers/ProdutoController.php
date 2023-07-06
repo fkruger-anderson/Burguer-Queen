@@ -14,6 +14,7 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::all();
         return view('TelaEmpresarialProduto', compact('produtos'));
+        //return view('TelaHomeCliente', compact('produtos'));
     }
 
     /**
@@ -37,7 +38,35 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        // Validação dos campos do formulário
+        $request->validate([
+            'nome' => 'required',
+            'ativo' => 'boolean',
+            'preco' => 'required|numeric',
+            'descricao' => 'required',
+            'id_cardapio' => 'required|exists:cardapios,id',
+            'ingredientes' => 'nullable|array',
+            'ingredientes.*' => 'exists:ingredientes,id',
+        ]);
+
+        // Criação do novo produto
+        $produto = new Produto();
+        $produto->nome_produto = $request->input('nome');
+        $produto->eh_ativo_produto = $request->input('ativo') ?? false;
+        $produto->preco_produto = $request->input('preco');
+        $produto->descricao_produto = $request->input('descricao');
+        $produto->id_cardapio = $request->input('id_cardapio');
+        $produto->save();
+
+        // Adição dos ingredientes relacionados ao produto
+        if ($request->has('ingredientes')) {
+            $ingredientes = $request->input('ingredientes');
+            $produto->ingredientes()->attach($ingredientes);
+        }
+
+        // Redirecionamento para a página de sucesso ou exibição de mensagem
+        return redirect()->route('produtos.index')->with('success', 'Produto cadastrado com sucesso!');
+
     }
 
     /**

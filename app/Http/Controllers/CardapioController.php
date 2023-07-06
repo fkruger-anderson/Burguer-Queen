@@ -28,8 +28,26 @@ class CardapioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // Validação dos campos do formulário
+        $request->validate([
+            'nome' => 'required',
+            'ativo' => 'boolean',
+            'tem_ingrediente' => 'boolean',
+        ]);
+
+
+        // Criação do novo cardápio
+        $cardapio = new Cardapio();
+        $cardapio->nome_cardapio = $request->input('nome');
+        $cardapio->eh_ativo_cardapio = $request->input('ativo') ?? false;
+        $cardapio->tem_ingrediente = $request->input('tem_ingrediente') ?? false;
+        $cardapio->save();
+
+
+        // Redirecionamento para a página de sucesso ou exibição de mensagem
+        return redirect()->route('cardapios.index')->with('success', 'Cardápio cadastrado com sucesso!');
+
+        }
 
     /**
      * Display the specified resource.
